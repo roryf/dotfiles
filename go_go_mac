@@ -29,6 +29,7 @@ echo "brew installing stuff"
 brew install git ripgrep imagemagick tree bat wget z
 
 echo "installing node (via nvm)"
+touch ~/.bash_profile
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash && . ~/.bash_profile
 nvm install node
 echo "node --version: $(node --version)"
