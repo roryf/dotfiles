@@ -14,8 +14,11 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo "Hello $(whoami)! Let's get you set up."
 
-echo "mkdir -p ${HOME}/projects"
-mkdir -p "${HOME}/projects"
+echo "mkdir -p ${HOME}/Source"
+mkdir -p "${HOME}/Source"
+
+echo "installing xcode"
+./xcode.sh
 
 echo "installing homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -37,13 +40,8 @@ echo "npm --version: $(npm --version)"
 echo "installing a few global npm packages"
 npm install --global tldr eslint
 
-echo "Installing Java via Jabba"
-curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh
-jabba install openjdk@1.11-0
-echo "java --version: $(java --version)"
-
 echo "installing apps with brew cask"
-brew install --cask alfred google-chrome visual-studio-code vlc discord zoom spotify slack iterm2 docker httpie htop
+brew install --cask alfred google-chrome visual-studio-code vlc zoom spotify slack iterm2 docker httpie htop firefox imageoptim figma caffiene licecap flipper
 
 echo "installing aws client"
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
@@ -51,7 +49,29 @@ unzip awscli-bundle.zip
 sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
 echo "Setup Git"
-wget  -O $HOME/.gitconfig https://raw.githubusercontent.com/joejag/dotfiles/main/.gitconfig
+git clone git@github.com:roryf/dotfiles.git $HOME/Source/dotfiles
+cp $HOME/Source/dotfiles/.gitconfig $HOME/.gitconfig
+echo "Set up GitHub SSH keys"
+cd $HOME/Source/dotfiles
+ssh -T git@github.com &> /dev/null
+if [ $? -ne 1 ]; then
+  if ! [ -f $HOME/.ssh/github ]; then
+    ssh-keygen -t rsa -b 4096 -C "badgrs@gmail.com" -f $HOME/.ssh/github
+    printf "%s\n" \
+        "Host github.com" \
+        "  IdentityFile $HOME/.ssh/github" \
+        "  LogLevel ERROR" >> ~/.ssh/config
+    pbcopy $HOME/.ssh/github.pub
+    open https://github.com/settings/ssh
+    while true; do
+        ssh -T git@github.com &> /dev/null
+        [ $? -eq 1 ] && break
+        sleep 5
+    done
+  else
+    echo "$HOME/.ssh/github already exists"
+  fi
+fi
 
 echo "cleaning up files"
 rm -rf awscli-bundle awscli-bundle.zip 
@@ -66,7 +86,7 @@ code --install-extension dbaeumer.vscode-eslint
 code --install-extension esbenp.prettier-vscode
 code --install-extension formulahendry.auto-rename-tag
 mkdir -p "$HOME/Library/Application Support/Code/User"
-wget  -O "$HOME/Library/Application Support/Code/User/settings.json" https://raw.githubusercontent.com/joejag/dotfiles/main/vscode-settings.json
+cp $HOME/Source/dotfiles/vscode-settings.json "$HOME/Library/Application Support/Code/User/settings.json"
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -153,7 +173,15 @@ done
 
 echo "Install oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+cp $HOME/Source/dotfiles/powerlevel9k.sh $HOME/.oh-my-zsh/custom/powerlevel9k.sh
 echo "Setup zsh preferences"
-wget  -O $HOME/.zshrc https://raw.githubusercontent.com/joejag/dotfiles/main/.zshrc
+cp $HOME/Source/dotfiles/.zshrc $HOME/.zshrc
+wget -O "$HOME/Downloads/Solarized Dark - Patched.itermcolors" https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Solarized%20Dark%20-%20Patched.itermcolors
+echo "Opening iterm2, goto preferences → profiles → colors → load presets to load Solarized Dark theme"
+sleep 2
+open "$HOME/Downloads/Solarized Dark - Patched.itermcolors"
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
