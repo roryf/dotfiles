@@ -26,7 +26,7 @@ echo "brew installing stuff"
 # tree: really handy for listing out directories in text
 # bat: A cat(1) clone with syntax highlighting and Git integration.
 # z: Jump around directories
-brew install git ripgrep imagemagick tree bat wget z
+brew install git ripgrep imagemagick tree bat wget z httpie htop
 
 echo "installing node (via nvm)"
 touch ~/.bash_profile
@@ -39,7 +39,7 @@ echo "installing a few global npm packages"
 npm install --global tldr eslint
 
 echo "installing apps with brew cask"
-brew install --cask alfred google-chrome visual-studio-code vlc zoom spotify slack iterm2 docker httpie htop firefox imageoptim figma caffiene licecap flipper
+brew install --cask alfred google-chrome visual-studio-code vlc zoom spotify slack iterm2 docker firefox imageoptim figma caffiene licecap flipper
 
 echo "installing aws client"
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
