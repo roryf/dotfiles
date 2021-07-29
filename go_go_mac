@@ -53,7 +53,7 @@ if [ $? -ne 1 ]; then
         "Host github.com" \
         "  IdentityFile $HOME/.ssh/github" \
         "  LogLevel ERROR" >> ~/.ssh/config
-    pbcopy $HOME/.ssh/github.pub
+    cat $HOME/.ssh/github.pub | pbcopy
     open https://github.com/settings/ssh
     while true; do
         ssh -T git@github.com &> /dev/null
