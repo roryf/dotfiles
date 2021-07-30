@@ -22,6 +22,5 @@
   "[scss]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "terminal.integrated.fontFamily": "MesloLGS NF",
-  "window.zoomLevel": 1
+  "terminal.integrated.fontFamily": "MesloLGS NF"
 }
