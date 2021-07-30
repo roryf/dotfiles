@@ -92,9 +92,6 @@ sudo pmset -a standbydelay 86400
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
-# Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
@@ -113,7 +110,7 @@ sudo systemsetup -setcomputersleep Off > /dev/null
 ###############################################################################
 
 # Trackpad: enable tap to click for this user and for the login screen
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
@@ -139,6 +136,10 @@ defaults write com.apple.dock static-only -bool true
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
+
+# Make it "pop" more
+defaults write com.apple.dock largesize -int 90
+defaults write com.apple.dock magnification -int 1
 
 ###############################################################################
 # Kill affected applications                                                  #
