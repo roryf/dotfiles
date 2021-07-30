@@ -39,7 +39,7 @@ echo "installing a few global npm packages"
 npm install --global tldr eslint
 
 echo "installing apps with brew cask"
-brew install --cask alfred google-chrome visual-studio-code vlc zoom spotify slack iterm2 docker firefox imageoptim figma caffeine licecap flipper
+brew install --cask alfred google-chrome visual-studio-code vlc zoom spotify slack iterm2 docker firefox imageoptim figma caffeine licecap flipper ruby cocoapods
 
 echo "Setup Git"
 wget  -O $HOME/.gitconfig https://raw.githubusercontent.com/roryf/dotfiles/main/.gitconfig
