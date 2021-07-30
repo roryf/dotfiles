@@ -169,17 +169,7 @@ RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-wget  -O $HOME/powerlevel9k.sh https://raw.githubusercontent.com/roryf/dotfiles/main/powerlevel9k.sh
 echo "Setup zsh preferences"
 wget  -O $HOME/.zshrc https://raw.githubusercontent.com/roryf/dotfiles/main/.zshrc
-
-###############################################################################
-# iterm setup                                                                 #
-###############################################################################
-
-wget -O "$HOME/Downloads/Solarized Dark - Patched.itermcolors" https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Solarized%20Dark%20-%20Patched.itermcolors
-echo "Opening iterm2, goto preferences → profiles → colors → load presets to load Solarized Dark theme"
-sleep 2
-open "$HOME/Downloads/Solarized Dark - Patched.itermcolors"
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
