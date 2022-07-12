@@ -17,6 +17,9 @@ echo "Hello $(whoami)! Let's get you set up."
 echo "mkdir -p ${HOME}/Source"
 mkdir -p "${HOME}/Source"
 
+echo "installing xcode"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/roryf/dotfiles/main/xcode.sh)"
+
 echo "installing homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -26,7 +29,7 @@ echo "brew installing stuff"
 # tree: really handy for listing out directories in text
 # bat: A cat(1) clone with syntax highlighting and Git integration.
 # z: Jump around directories
-brew install git ripgrep imagemagick tree bat wget z httpie htop git-delta awscli
+brew install git ripgrep imagemagick tree bat wget z httpie htop git-delta awscli rbenv python watchman
 
 echo "installing node (via nvm)"
 touch ~/.bash_profile
@@ -35,11 +38,16 @@ nvm install node
 echo "node --version: $(node --version)"
 echo "npm --version: $(npm --version)"
 
-echo "installing a few global npm packages"
-npm install --global tldr eslint
+ehoc "installing ruby (via rbenv)"
+rbenv install 2.7.6
+rbenv global 2.7.6
+echo "ruby --version: $(ruby --version)"
+
+echo "Installing awsume"
+pip install awsume
 
 echo "installing apps with brew cask"
-brew install --cask alfred google-chrome visual-studio-code vlc zoom spotify slack iterm2 docker firefox imageoptim figma caffeine licecap flipper ruby cocoapods
+brew install --cask alfred google-chrome visual-studio-code vlc zoom spotify slack iterm2 docker firefox imageoptim figma licecap flipper idb-companion android-studio notion keybase sequel-ace
 
 echo "Setup Git"
 wget  -O $HOME/.gitconfig https://raw.githubusercontent.com/roryf/dotfiles/main/.gitconfig
@@ -64,9 +72,6 @@ if [ $? -ne 1 ]; then
     echo "$HOME/.ssh/github already exists"
   fi
 fi
-
-echo "installing xcode"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/roryf/dotfiles/main/xcode.sh)"
 
 echo "making system modifications:"
 
