@@ -40,7 +40,7 @@ nvm install node
 echo "node --version: $(node --version)"
 echo "npm --version: $(npm --version)"
 
-ehoc "installing ruby (via rbenv)"
+echo "installing ruby (via rbenv)"
 rbenv install 2.7.6
 rbenv global 2.7.6
 gem install bundler -v 2.2.27
