@@ -26,6 +26,9 @@ alias gs='git status'
 alias gp='git pull'
 alias gl='glog'
 
+# M1 homebrew
+[ -d "/opt/homebrew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # NVM
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"

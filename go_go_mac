@@ -22,6 +22,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/roryf/dotfiles/main/xcode.
 
 echo "installing homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew update
 
 echo "brew installing stuff"
 # ripgrep: rg is faster than alternatives
@@ -41,6 +42,7 @@ echo "npm --version: $(npm --version)"
 ehoc "installing ruby (via rbenv)"
 rbenv install 2.7.6
 rbenv global 2.7.6
+gem install bundler -v 2.2.27
 echo "ruby --version: $(ruby --version)"
 
 echo "Installing awsume"
