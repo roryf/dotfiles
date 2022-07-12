@@ -21,7 +21,8 @@ echo "installing xcode"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/roryf/dotfiles/main/xcode.sh)"
 
 echo "installing homebrew"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+[ -d "/opt/homebrew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 brew update
 
 echo "brew installing stuff"
