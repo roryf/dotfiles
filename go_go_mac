@@ -47,7 +47,7 @@ gem install bundler -v 2.2.27
 echo "ruby --version: $(ruby --version)"
 
 echo "Installing awsume"
-pip install awsume
+python3 -m pip install awsume
 
 echo "installing apps with brew cask"
 brew tap homebrew/cask-versions
