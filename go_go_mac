@@ -31,7 +31,7 @@ echo "brew installing stuff"
 # tree: really handy for listing out directories in text
 # bat: A cat(1) clone with syntax highlighting and Git integration.
 # z: Jump around directories
-brew install git ripgrep imagemagick tree bat wget z httpie htop git-delta awscli rbenv python watchman
+brew install git ripgrep imagemagick tree bat wget z httpie htop git-delta awscli rbenv watchman python pyenv
 
 echo "installing node (via nvm)"
 touch ~/.bash_profile
@@ -45,6 +45,12 @@ CFLAGS="-Wno-error=implicit-function-declaration" rbenv install 2.7.6
 rbenv global 2.7.6
 gem install bundler -v 2.2.27
 echo "ruby --version: $(ruby --version)"
+
+echo "installing python (via pyenv)"
+pyenv install 2.7.18
+pyenv global 2.7.18
+eval "$(pyenv init --path)"
+echo "python --version: $(python --version)"
 
 echo "Installing awsume"
 python3 -m pip install awsume

@@ -33,12 +33,9 @@ alias gl='glog'
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-# Prefer the Homebrew Ruby over the default one
-# export PATH="/usr/local/opt/ruby/bin:$PATH"
-
 eval "$(rbenv init - zsh)"
 
-export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+eval "$(pyenv init --path)"
 
 export JAVA_HOME=`/usr/libexec/java_home`
 

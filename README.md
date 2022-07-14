@@ -8,6 +8,7 @@ https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel1
 2. `Use a different font for non-ASCII character` is not checked.
 3. iTerm2 / Preferences / Profiles / Colors / Colors presets / Tango Dark
 4. iTerm2 / Preferences / Profiles / Window / Transparency 15%
+5. iTerm2 / Preferences / Profiles / Keys / Key Mappings / Presets / Natural Text Editing
 
 ```bash
 p10k configure
