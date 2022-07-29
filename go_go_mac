@@ -31,7 +31,7 @@ echo "brew installing stuff"
 # tree: really handy for listing out directories in text
 # bat: A cat(1) clone with syntax highlighting and Git integration.
 # z: Jump around directories
-brew install git ripgrep imagemagick tree bat wget z httpie htop git-delta awscli rbenv watchman python pyenv
+brew install git ripgrep imagemagick tree bat wget z httpie htop git-delta awscli rbenv watchman python pyenv fzf
 
 echo "installing node (via nvm)"
 touch ~/.bash_profile
