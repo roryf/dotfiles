@@ -56,8 +56,7 @@ echo "Installing awsume"
 python3 -m pip install awsume
 
 echo "installing apps with brew cask"
-brew tap homebrew/cask-versions
-brew install --cask alfred google-chrome visual-studio-code vlc zoom spotify slack iterm2 docker firefox imageoptim figma licecap flipper android-studio notion sequel-ace zulu11
+brew install --cask google-chrome visual-studio-code vlc zoom spotify slack iterm2 docker firefox imageoptim figma licecap android-studio notion sequel-ace zulu@11
 
 echo "Setup Git"
 wget  -O $HOME/.gitconfig https://raw.githubusercontent.com/roryf/dotfiles/main/.gitconfig
